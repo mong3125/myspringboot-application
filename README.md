@@ -70,6 +70,25 @@ ShadowJar 플러그인을 사용하여 단일 실행 가능한 JAR 파일을 생
 ./gradlew shadowJar
 java -jar build/libs/MySpringBootApplication-1.0-SNAPSHOT-all.jar
 ```
+
+### 3. 실행 화면
+```plaintext
+         __  __       ____             _             ____              _   
+        |  \/  |_   _/ ___| _ __  _ __(_)_ __   __ _| __ )  ___   ___ | |_
+        | |\/| | | | \___ \| '_ \| '__| | '_ \ / _` |  _ \ / _ \ / _ \| __|
+        | |  | | |_| |___) | |_) | |  | | | | | (_| | |_) | (_) | (_) | |_
+        |_|  |_|\__, |____/| .__/|_|  |_|_| |_|\__, |____/ \___/ \___/ \__|
+                |___/      |_|                 |___/
+
+
+2025-02-04 21:18:17 [INFO] org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 21.0.3+7-LTS-152
+2025-02-04 21:18:17 [INFO] o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2025-02-04 21:18:17 [INFO] o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@74cadd41{/,null,AVAILABLE}
+2025-02-04 21:18:17 [INFO] o.e.jetty.server.AbstractConnector - Started ServerConnector@18920cc{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2025-02-04 21:18:17 [INFO] org.eclipse.jetty.server.Server - Started Server@14d14731{STARTING}[11.0.24,sto=0] @628ms
+```
+
+
 ## API 엔드포인트
 
 | HTTP 메서드 | URL                              | 설명                             |
