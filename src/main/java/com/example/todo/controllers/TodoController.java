@@ -1,7 +1,8 @@
 package com.example.todo.controllers;
 
 
-import com.example.todo.model.Todo;
+import com.example.todo.dto.TodoRequest;
+import com.example.todo.dto.TodoResponse;
 import com.example.todo.service.TodoService;
 import org.myspringframework.annotations.Autowired;
 import org.myspringframework.annotations.RestController;
@@ -18,37 +19,39 @@ public class TodoController {
     private TodoService todoService;
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Todo> getTodo(@PathVariable("id") Long id) {
-        Todo foundTodo = todoService.getTodo(id);
+    public ResponseEntity<TodoResponse> getTodo(@PathVariable("id") Long id) {
+        TodoResponse foundTodo = todoService.getTodo(id);
         return new ResponseEntity<>(foundTodo, HttpStatusCode.OK);
     }
 
-    @RequestMapping(value = "/id/{id}/done", method = RequestMethod.PUT)
-    public ResponseEntity<Todo> done(@PathVariable("id") Long id) {
-        Todo doneTodo = todoService.done(id);
+    @RequestMapping(value = "/id/{id}/done", method = RequestMethod.PATCH)
+    public ResponseEntity<TodoResponse> done(@PathVariable("id") Long id) {
+        TodoResponse doneTodo = todoService.done(id);
         return new ResponseEntity<>(doneTodo, HttpStatusCode.OK);
     }
 
     @GetMapping
-    public ResponseEntity<List<Todo>> getAllTodos() {
-        List<Todo> todos = todoService.getAllTodos();
+    public ResponseEntity<List<TodoResponse>> getAllTodos() {
+        List<TodoResponse> todos = todoService.getAllTodos();
         return new ResponseEntity<>(todos, HttpStatusCode.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Todo> createTodo(@RequestBody Todo todo) {
-        Todo savedTodo = todoService.createTodo(todo);
+    public ResponseEntity<TodoResponse> createTodo(@RequestBody TodoRequest todoRequest) {
+        TodoResponse savedTodo = todoService.createTodo(todoRequest);
         return new ResponseEntity<>(savedTodo, HttpStatusCode.CREATED);
     }
 
-    @PutMapping
-    public ResponseEntity<Todo> updateTodo(@RequestBody Todo todo) {
-        Todo updatedTodo = todoService.updateTodo(todo);
+    @PutMapping("/id/{id}")
+    public ResponseEntity<TodoResponse> updateTodo(@PathVariable("id") Long id, @RequestBody TodoRequest todoRequest) {
+        TodoResponse updatedTodo = todoService.updateTodo(id, todoRequest);
         return new ResponseEntity<>(updatedTodo, HttpStatusCode.OK);
     }
 
     @DeleteMapping
-    public void deleteTodo(@RequestParam("id") Long id) {
+    public ResponseEntity<Void> deleteTodo(@RequestParam("id") Long id) {
         todoService.delete(id);
+
+        return new ResponseEntity<>(HttpStatusCode.NO_CONTENT);
     }
 }

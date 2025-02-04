@@ -3,7 +3,7 @@ package com.example.todo.model;
 public class SubTodo {
     private Long id;
     private String content;
-    private boolean isDone;
+    private boolean done;
 
     public Long getId() {
         return id;
@@ -22,15 +22,15 @@ public class SubTodo {
     }
 
     public boolean isDone() {
-        return isDone;
+        return done;
     }
 
     public void setDone(boolean done) {
-        isDone = done;
+        this.done = done;
     }
 
-    public void done() {
-        isDone = true;
+    public void markAsDone() {
+        this.done = true;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class SubTodo {
         return "SubTodo{" +
                 "id=" + id +
                 ", content='" + content + '\'' +
-                ", isDone=" + isDone +
+                ", done=" + done +
                 '}';
     }
 }

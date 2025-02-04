@@ -3,22 +3,18 @@ package com.example.todo.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Todo {
     private Long id;
     private String title;
     private String description;
-    private boolean isDone;
-    private Boolean isImportant;
+    private Boolean done; // null 체크를 위해 Boolean으로 변경
+    private Boolean important;
     private LocalDate dueDate;
     private LocalTime startTime;
     private LocalTime endTime;
     private List<SubTodo> subTodos = new ArrayList<>();
-    private Map<String, SubTodo> subTodoMap = new HashMap<>();
-    private SubTodo subTodo;
 
     public Long getId() {
         return id;
@@ -44,20 +40,20 @@ public class Todo {
         this.description = description;
     }
 
-    public boolean isDone() {
-        return isDone;
+    public Boolean getDone() {
+        return done;
     }
 
-    public void setDone(boolean done) {
-        isDone = done;
+    public void setDone(Boolean done) {
+        this.done = done;
     }
 
     public Boolean getImportant() {
-        return isImportant;
+        return important;
     }
 
     public void setImportant(Boolean important) {
-        isImportant = important;
+        this.important = important;
     }
 
     public LocalDate getDueDate() {
@@ -98,8 +94,8 @@ public class Todo {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", isDone=" + isDone +
-                ", isImportant=" + isImportant +
+                ", done=" + done +
+                ", important=" + important +
                 ", dueDate=" + dueDate +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
