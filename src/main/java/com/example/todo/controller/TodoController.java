@@ -1,4 +1,4 @@
-package com.example.todo.controllers;
+package com.example.todo.controller;
 
 
 import com.example.todo.dto.TodoRequest;
@@ -24,7 +24,7 @@ public class TodoController {
         return new ResponseEntity<>(foundTodo, HttpStatusCode.OK);
     }
 
-    @RequestMapping(value = "/id/{id}/done", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/done/id/{id}", method = RequestMethod.PATCH)
     public ResponseEntity<TodoResponse> done(@PathVariable("id") Long id) {
         TodoResponse doneTodo = todoService.done(id);
         return new ResponseEntity<>(doneTodo, HttpStatusCode.OK);
